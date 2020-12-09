@@ -30,15 +30,16 @@
             stopWatch.Start();
             try
             {
+                logger.LogWarning($"Starting {DateTime.UtcNow}");
                 var result = await messageExampleRequestClient.GetResponse<IMessageResult>(new {TestMessage = "Testing a test"});
                 stopWatch.Stop();
-                logger.LogInformation($"Finished within {stopWatch.Elapsed.Seconds} seconds");
+                logger.LogWarning($"Finished within {stopWatch.Elapsed.Seconds} seconds");
                 return result.Message.Done;
             }
             catch (Exception)
             {
                 stopWatch.Stop();
-                logger.LogInformation($"Finished within {stopWatch.Elapsed.Seconds} seconds");
+                logger.LogWarning($"Finished within {stopWatch.Elapsed.Seconds} seconds");
                 throw;
             }
         }
