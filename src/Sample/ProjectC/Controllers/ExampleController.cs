@@ -33,12 +33,15 @@
                 logger.LogWarning($"Starting {DateTime.UtcNow}");
                 var result = await messageExampleRequestClient.GetResponse<IMessageResult>(new {TestMessage = "Testing a test"});
                 stopWatch.Stop();
+                logger.LogWarning($"Finished at {DateTime.UtcNow}");
                 logger.LogWarning($"Finished within {stopWatch.Elapsed.Seconds} seconds");
+
                 return result.Message.Done;
             }
             catch (Exception)
             {
                 stopWatch.Stop();
+                logger.LogWarning($"Finished at {DateTime.UtcNow}");
                 logger.LogWarning($"Finished within {stopWatch.Elapsed.Seconds} seconds");
                 throw;
             }
